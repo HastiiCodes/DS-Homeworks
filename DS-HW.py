@@ -1,4 +1,11 @@
-#HW 1:
+#سلام و عرض ادب استاد. من همورک های شماره 1 و 2 رو سر تایم خودش اپلود کرده بودم و ریپازیتوری اون ها توی پروفایلم جدا هست
+#اما چون فرموده بودید همه رو توی یک ریپازیتوری اپلود کنیم من این ریپازیتوری را جدا ساختم
+# و مجددا همورک هارو آپلود کردم
+
+
+
+
+#HW 1: گرفتن عنصر i ام.
 
 class Queue:
     def __init__(self, max_size):
@@ -75,3 +82,36 @@ while True:
         break
     else:
         print("Number is out of range.")
+
+#HW3: مرتب سازی هرمی
+
+
+def heapify(arr, n, i):
+	largest = i 
+	l = 2 * i + 1 # left = 2*i + 1
+	r = 2 * i + 2 # right = 2*i + 2
+    
+	if l < n and arr[i] < arr[l]:
+		largest = l
+	elif r < n and arr[largest] < arr[r]:
+		largest = r
+        
+	elif largest != i:
+		(arr[i], arr[largest]) = (arr[largest], arr[i])
+		heapify(arr, n, largest)
+        
+def heapSort(arr):
+	n = len(arr)
+	for i in range(n // 2, -1, -1):
+		heapify(arr, n, i)
+        
+        for i in range(n - 1, 0, -1):
+		(arr[i], arr[0]) = (arr[0], arr[i])
+		heapify(arr, i, 0)
+            
+arr = [12, 11, 13, 5, 6, 7, ]
+heapSort(arr)
+n = len(arr)
+print('Sorted array is')
+for i in range(n):
+	print(arr[i])
